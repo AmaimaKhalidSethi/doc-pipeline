@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DOC_PIPELINE_DB=/data/doc_pipeline.db
+      - MAX_UPLOAD_BYTES=${MAX_UPLOAD_BYTES:-26214400}
+      - UPLOAD_RATE_LIMIT_PER_MINUTE=${UPLOAD_RATE_LIMIT_PER_MINUTE:-10}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:8501,http://127.0.0.1:8501,http://frontend:8501}
+    volumes:
+      - doc-pipeline-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  doc-pipeline-data:
