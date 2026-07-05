@@ -1,0 +1,15 @@
+Project Kickoff Notes -- Atlas Migration
+
+Date: 2026-07-08
+Attendees: Sarah Chen (Project Lead, Meridian Systems), David Okafor (Engineering), Lucia Fernandez (Client, Northwind Retail)
+
+Summary: Kicked off the Atlas database migration project for Northwind Retail. Meridian Systems will migrate Northwind's legacy inventory system to the new Atlas platform. Timeline is 10 weeks, targeting a go-live of 2026-09-15.
+
+Key discussion points:
+- Northwind's current system runs on an unsupported version of their old ERP, so a phased cutover is required.
+- David Okafor will lead the technical migration and needs read access to the production database by 2026-07-10.
+- Lucia Fernandez will provide a full data dictionary by 2026-07-12.
+- Sarah Chen will send the signed statement of work to legal by end of day 2026-07-08.
+- Weekly status calls every Monday at 10am, starting 2026-07-13.
+
+Risks: Northwind's holiday inventory freeze begins 2026-11-01, so the migration must be fully complete and validated before then.

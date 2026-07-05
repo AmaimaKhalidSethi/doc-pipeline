@@ -1,0 +1,22 @@
+Incident Postmortem: Checkout Service Outage
+
+Incident Date: 2026-06-22
+Duration: 47 minutes (14:03 UTC to 14:50 UTC)
+Severity: SEV-1
+Author: Priya Nair, Site Reliability Engineering
+
+Summary: The checkout service for the OrbitCart platform experienced a full outage due to a misconfigured database connection pool limit that was rolled out as part of release v4.12.0. Approximately 2,300 checkout attempts failed during the window.
+
+Root cause: A configuration change reduced the max connection pool size from 200 to 20 across all checkout service replicas, causing connection exhaustion under normal traffic load.
+
+Timeline:
+- 14:03 UTC: Release v4.12.0 deployed to production.
+- 14:07 UTC: Error rate alerts triggered for the checkout service.
+- 14:15 UTC: On-call engineer Marcus Webb began investigating.
+- 14:38 UTC: Root cause identified as the connection pool misconfiguration.
+- 14:50 UTC: Rollback to v4.11.2 completed; service restored.
+
+Action items:
+- Marcus Webb will add a pre-deploy validation check for connection pool settings by 2026-07-05.
+- Priya Nair will update the deployment runbook to require canary rollout for all database-adjacent config changes, due 2026-07-10.
+- The SRE team will schedule a load test of the new connection pool defaults before the next major release.

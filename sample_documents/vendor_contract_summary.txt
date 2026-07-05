@@ -1,0 +1,18 @@
+Vendor Services Agreement Summary
+
+Parties: Brightline Logistics Inc. ("Vendor") and Cascade Foods Co. ("Client")
+Effective Date: 2026-08-01
+Term: 12 months, automatically renewing unless either party gives 60 days' notice.
+
+Scope: Vendor will provide cold-chain freight services for Client's Pacific Northwest distribution centers, including the Seattle, Portland, and Boise facilities.
+
+Key obligations:
+- Vendor must maintain temperature logs for all shipments and deliver them to Client's compliance team within 24 hours of delivery.
+- Client must submit weekly shipment forecasts to Vendor every Friday by 5pm.
+- Payment terms are net-30 from invoice date.
+- Either party may terminate for cause with 15 days written notice if the other party fails to cure a material breach.
+
+Action items:
+- Client's compliance officer, Renee Wallace, must approve the temperature-logging SLA by 2026-07-20.
+- Vendor's account manager, Tom Reilly, will schedule an onboarding call with the Boise facility manager before 2026-07-25.
+- Legal (both parties) to finalize the liability insurance certificate exchange by 2026-07-31.
