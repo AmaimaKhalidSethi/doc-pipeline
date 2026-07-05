@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          pip install -r backend/requirements.txt
+          pip install pytest
+
+      - name: Install frontend dependencies (for AppTest smoke check)
+        run: pip install -r frontend/requirements.txt
+
+      - name: Run test suite (offline, mocked extraction agent -- no API key needed)
+        run: pytest tests/test_pipeline.py -v
+
+      - name: Run offline demo against sample documents
+        run: python tests/run_demo.py
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: docker build -t doc-pipeline-backend ./backend
+
+      - name: Build frontend image
+        run: docker build -t doc-pipeline-frontend ./frontend
