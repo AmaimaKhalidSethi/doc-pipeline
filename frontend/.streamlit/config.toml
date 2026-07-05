@@ -1,0 +1,42 @@
+# Streamlit theming, written for streamlit==1.58.0.
+#
+# Research finding: current Streamlit lets you define separate [theme.light]
+# and [theme.dark] tables so the user's choice in the Settings menu picks
+# between two themes YOU control, instead of Streamlit's default light theme
+# (which is washed-out, low-contrast, and was the original complaint here).
+#
+# `base` in [theme] sets the fallback/starting point; the light/dark tables
+# below override colors explicitly so neither theme ever falls back to the
+# default pale palette.
+
+[theme]
+base = "light"
+font = "sans serif"
+baseRadius = "medium"
+
+[theme.light]
+primaryColor = "#2757D6"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#E7ECF6"
+textColor = "#101319"
+borderColor = "#C7CEDD"
+linkColor = "#1B4FCC"
+codeBackgroundColor = "#EEF1F8"
+
+[theme.dark]
+primaryColor = "#6E9BFF"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#1B2030"
+textColor = "#F2F4F8"
+borderColor = "#3A4257"
+linkColor = "#9DB8FF"
+codeBackgroundColor = "#171B27"
+
+# Sidebar reuses the light/dark colors above unless [theme.sidebar] /
+# [theme.light.sidebar] / [theme.dark.sidebar] tables are added -- left
+# unset so it inherits our palette instead of Streamlit's default sidebar
+# gray, which is one of the "everything looks washed out" complaints with
+# the stock theme.
+
+[server]
+maxUploadSize = 25
