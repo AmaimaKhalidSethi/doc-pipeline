@@ -1,0 +1,8 @@
+# Versions confirmed via web research on 2026-07-05 (see README "Research Findings").
+fastapi[standard]==0.139.0
+starlette>=1.0.1  # CVE-2026-48710 "BadHost" host-header validation bypass, fixed in 1.0.1; pinned explicitly even though fastapi[standard] currently resolves 1.3.1
+python-multipart==0.0.32  # >=0.0.30 fixes CVE-2026-53539 (quadratic-time parsing DoS); also above the 0.0.22/0.0.26 fixes for CVE-2026-24486/CVE-2026-40347
+pydantic==2.13.4
+pymupdf==1.27.2  # well above 1.26.7, which fixed CVE-2026-3029 (path traversal in the `embed-extract` CLI -- not used by this project, but confirmed patched anyway)
+python-docx==1.2.0
+groq==1.5.0  # bumped from 1.1.1 -- 1.1.2 sanitized endpoint path params; picking up the latest stable release
